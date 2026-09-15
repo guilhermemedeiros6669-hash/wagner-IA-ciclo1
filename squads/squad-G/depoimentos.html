@@ -1,0 +1,119 @@
+<!-- Depoimentos - Squad G (Refatorado) -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Depoimentos de clientes sobre os projetos desenvolvidos pelo Squad G." />
+  <title>Depoimentos - Squad G</title>
+  <link rel="stylesheet" href="depoimentos.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="squads/squad-G/styles/img/logo-squadG.png" alt="Logo Squad G">
+    </div>
+
+    <div class="menu-container">
+      <nav id="menu-principal" class="nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Sobre Nós</a></li>
+          <li><a href="#">Serviços</a></li>
+          <li><a href="#">Projetos</a></li>
+          <li><a href="#">Habilidades</a></li>
+          <li><a href="#" aria-current="page">Depoimentos</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="titulo-depoimentos" aria-labelledby="depoimentos-titulo">
+      <img src="squads/squad-G/styles/img/logo-depoimentos.png" alt="" role="presentation">
+      <h1 id="depoimentos-titulo">Depoimentos</h1>
+    </section>
+
+    <section
+      class="container-depoimentos"
+      aria-roledescription="carrossel"
+      aria-label="Depoimentos de clientes"
+    >
+      <div class="carrossel-controle" role="group" aria-label="Selecionar depoimento">
+        <input type="radio" name="slider" id="card1" checked aria-label="Depoimento 1 de 4">
+        <input type="radio" name="slider" id="card2" aria-label="Depoimento 2 de 4">
+        <input type="radio" name="slider" id="card3" aria-label="Depoimento 3 de 4">
+        <input type="radio" name="slider" id="card4" aria-label="Depoimento 4 de 4">
+      </div>
+
+      <div class="carrossel">
+
+        <ul class="cards">
+
+          <li class="card">
+            <figure>
+              <img class="foto" src="squads/squad-G/styles/img/usuario1.png" alt="Foto de Davi Ribeiro">
+              <figcaption class="nome">Davi Ribeiro</figcaption>
+            </figure>
+            <blockquote class="texto">
+              <p>O projeto desenvolvido pelo Squad G me surpreendeu bastante, interface é bem intuitiva e o impacto foi imediato!</p>
+            </blockquote>
+          </li>
+
+          <li class="card">
+            <figure>
+              <img class="foto" src="squads/squad-G/styles/img/usuario2.png" alt="Foto de Carla Silva">
+              <figcaption class="nome">Carla Silva</figcaption>
+            </figure>
+            <blockquote class="texto">
+              <p>Fiquei impressionada com o nível de detalhe e a qualidade da execução. É visível o empenho do Squad G em entregar uma solução detalhada.</p>
+            </blockquote>
+          </li>
+
+          <li class="card">
+            <figure>
+              <img class="foto" src="squads/squad-G/styles/img/usuario3.png" alt="Foto de Gabriel Santos">
+              <figcaption class="nome">Gabriel Santos</figcaption>
+            </figure>
+            <blockquote class="texto">
+              <p>Há uma consistência visual forte em todas as páginas, o que reforça a identidade do projeto. É um trabalho de design muito coeso e bem executado pelo Squad G.</p>
+            </blockquote>
+          </li>
+
+          <li class="card">
+            <figure>
+              <img class="foto" src="squads/squad-G/styles/img/usuario4.png" alt="Foto de Luiza Barbosa">
+              <figcaption class="nome">Luiza Barbosa</figcaption>
+            </figure>
+            <blockquote class="texto">
+              <p>O design é limpo, moderno e muito profissional. A paleta de cores escolhida pelo Squad G é agradável e facilita a leitura do conteúdo.</p>
+            </blockquote>
+          </li>
+
+        </ul>
+
+        <label class="arrow prev" for="card1" aria-label="Depoimento anterior">&#10094;</label>
+        <label class="arrow next" for="card2" aria-label="Próximo depoimento">&#10095;</label>
+
+        <label class="arrow prev" for="card2" aria-label="Depoimento anterior">&#10094;</label>
+        <label class="arrow next" for="card3" aria-label="Próximo depoimento">&#10095;</label>
+
+        <label class="arrow prev" for="card3" aria-label="Depoimento anterior">&#10094;</label>
+        <label class="arrow next" for="card4" aria-label="Próximo depoimento">&#10095;</label>
+
+        <label class="arrow prev" for="card4" aria-label="Depoimento anterior">&#10094;</label>
+        <label class="arrow next" for="card1" aria-label="Próximo depoimento">&#10095;</label>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Desenvolvido pelo Grupo de Estudantes (SQUAD G)</p>
+    <p>Faculdade Imaculada Conceição do Recife - 2025.</p>
+  </footer>
+
+</body>
+</html>

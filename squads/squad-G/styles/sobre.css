@@ -1,0 +1,170 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #d3d3d3;
+  background-size: cover;
+  color: #333;
+}
+
+/* ===== Header / Navegação ===== */
+
+header {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0px;
+  margin-top: -110px;
+  margin-bottom: -75px;
+}
+
+header img {
+  height: 375px;
+  width: auto;
+}
+
+.menu-container ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin-top: -75px;
+}
+
+.menu-container ul li a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.menu-container ul li a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Layout principal ===== */
+
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.titulo-equipe h1 {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 42px;
+  color: #000000;
+}
+
+.altura {
+  height: 575px;
+}
+
+/* ===== Quem Somos ===== */
+
+.quem-somos-box {
+  width: 70%;
+  max-width: 1200px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+/* Era ".quem-esquerda h1"; esse título agora é <h2> (só pode existir
+   um <h1> por página, que já é "Sobre Nós") */
+.quem-esquerda h2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 42px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.quem-direita p {
+  font-size: 17px;
+  line-height: 1.6;
+  text-align: justify;
+  color: #000000;
+  padding-left: 20px;
+}
+
+/* ===== Nossa Equipe ===== */
+
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Era ".container h1"; "Nossa Equipe" também virou <h2> pelo mesmo motivo acima */
+.container h2 {
+  font-size: 42px;
+  margin-bottom: 30px;
+  color: #000000;
+}
+
+/* A lista de integrantes agora é uma <ul>; sem esse reset ela
+   ganharia marcadores e um recuo padrão do navegador */
+.equipe-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fotos {
+  display: inline-block;
+  width: 230px;
+  margin: 15px;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Foto + nome agora ficam num <figure>, que tem margem padrão do
+   navegador e empurraria o conteúdo para fora do card */
+.fotos figure {
+  margin: 0;
+}
+
+.fotos img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Era ".fotos h2"; o nome de cada pessoa agora é <h3>
+   (h1 > h2 "Nossa Equipe" > h3 nome de cada integrante) */
+.fotos h3 {
+  font-size: 22px;
+  margin-top: 15px;
+  color: #000000;
+}
+
+.fotos p {
+  font-size: 15px;
+  color: #000;
+  font-weight: bold;
+}
+
+/* ===== Footer ===== */
+
+footer {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 20px;
+  margin-top: 60px;
+  font-size: 15px;
+  font-weight: bold;
+}

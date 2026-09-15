@@ -1,0 +1,126 @@
+/* Estilos base - personalize para seu squad */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: rgb(210, 208, 208);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Header / Navegação ===== */
+/* Regras escopadas a #menu-principal, em vez de aplicar flex/gap
+   a QUALQUER ul, li ou a da página (isso afetaria o menu, os
+   projetos, o formulário, tudo ao mesmo tempo) */
+
+#menu-principal ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+  list-style: none;
+  margin-bottom: 15px;
+}
+
+#menu-principal a {
+  text-decoration: none;
+  color: black;
+}
+
+/* ===== Hero ===== */
+
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Era ".titulo-principal a" (seletor de CLASSE), mas o elemento
+   sempre teve id="titulo-principal", nunca essa classe — a regra
+   nunca funcionou. Além disso, o h1 não contém mais um <a> dentro
+   (o título deixou de ser clicável), então o alvo agora é o próprio h1. */
+#titulo-principal {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* ===== Seções de conteúdo ===== */
+
+.projetos,
+.contato,
+.sobre,
+.curriculo {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.projeto {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Formulário de contato ===== */
+
+.form-contato label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-contato input[type="text"],
+.form-contato input[type="email"],
+.form-contato textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.form-contato button[type="submit"] {
+  background-color: #286ea7;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* ===== Footer ===== */
+
+.footer {
+  background-color: #343a40;
+  color: #bbb;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9em;
+  margin-top: 40px;
+}

@@ -1,0 +1,138 @@
+/* Estilos base - personalize para seu squad */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #d3d3d3;
+    color: #333;
+  }
+  
+  /* ===== Header / Navegação ===== */
+  /* Esta página ganhou header/nav na refatoração do HTML (para ficar
+     consistente com as outras páginas do site), então esses estilos
+     são novos — não existiam no CSS original. */
+  
+  header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+    background-color: #d3d3d3;
+  }
+  
+  .img-logo {
+    height: 60px;
+    width: auto;
+  }
+  
+  .menu-container ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .menu-container ul li a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .menu-container ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* ===== Conteúdo ===== */
+  
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  h1 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+    color: rgb(156, 66, 240);
+  }
+  
+  h2 {
+    margin-bottom: 10px;
+    color: rgb(156, 66, 240);
+  }
+  
+  /* Era ".design" (só a primeira das 3 divs de serviço, malformada).
+     Agora estiliza todos os itens da <ul class="servicos-lista"> de uma vez. */
+  .servicos-lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+  
+  .servico {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .servico ul {
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+  
+  /* ===== Tabela de planos ===== */
+  /* Substitui os atributos border/cellpadding/cellspacing removidos do HTML */
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  
+  thead th {
+    background-color: rgb(156, 66, 240);
+    color: #ffffff;
+  }
+  
+  td ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+  
+  /* ===== Footer ===== */
+  
+  footer {
+    background-color: #343a40;
+    color: #bbb;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+  }

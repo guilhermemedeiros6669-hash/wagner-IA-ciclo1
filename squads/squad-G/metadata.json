@@ -1,0 +1,24 @@
+{
+  "squad_name": "squad-G",
+  "project": {
+    "start_date": "2025-03-01",
+    "deadline": "2025-03-28",
+    "technologies": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  "team": {
+    "experiment_group": null,
+    "members": {
+      "html_team": [
+        "A25",
+        "A26"
+      ],
+      "css_team": [
+        "A27",
+        "A28"
+      ]
+    }
+  }
+}

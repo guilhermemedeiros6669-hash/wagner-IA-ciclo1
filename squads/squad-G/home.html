@@ -1,0 +1,80 @@
+<!-- Home - Squad G (Refatorado) -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Squad G — portfólio com projetos, currículo e contato." />
+  <title>Squad G • Portfólio</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+  <header id="topo" class="header">
+    <div class="menu-container">
+      <nav id="menu-principal" class="nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="#topo" aria-current="page">Home</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="#curriculo">Currículo</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="hero">
+      <h1 id="titulo-principal">Squad G</h1>
+      <p>Excelência e soluções profissionais.</p>
+    </div>
+  </header>
+
+  <main>
+    <section id="projetos" class="projetos" aria-labelledby="projetos-titulo">
+      <h2 id="projetos-titulo">Projetos</h2>
+
+      <article class="projeto">
+        <h3>Projeto Principal</h3>
+        <p>Entrega estratégica realizada pelo Squad G.</p>
+      </article>
+
+      <article class="projeto">
+        <h3>Projeto Secundário</h3>
+        <p>Iniciativa complementar desenvolvida com precisão.</p>
+      </article>
+    </section>
+
+    <section id="sobre" class="sobre" aria-labelledby="sobre-titulo">
+      <h2 id="sobre-titulo">Sobre</h2>
+      <p>Conteúdo sobre o Squad G a ser adicionado.</p>
+    </section>
+
+    <section id="curriculo" class="curriculo" aria-labelledby="curriculo-titulo">
+      <h2 id="curriculo-titulo">Currículo</h2>
+      <p>Conteúdo de currículo a ser adicionado.</p>
+    </section>
+
+    <section id="contato" class="contato" aria-labelledby="contato-titulo">
+      <h2 id="contato-titulo">Contato</h2>
+
+      <form id="form-contato" class="form-contato">
+        <label for="nome">Nome</label>
+        <input id="nome" name="nome" type="text" required>
+
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" required>
+
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" rows="3" required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer id="rodape" class="footer">
+    <p>&copy; 2025 Squad G</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+/* Estilos base - personalize para seu squad */
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #f7f9fc;
+  @apply text-gray-700;
+}
+
+main {
+  @apply container mx-auto px-4 py-8;
+}
+
+/* ===== Header / Navegação ===== */
+
+header {
+  @apply sticky top-0 z-50 bg-white shadow-md p-4 flex justify-between items-center;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.nav ul {
+  @apply flex space-x-4 list-none p-0 m-0;
+}
+
+.nav a {
+  @apply text-gray-600 hover:text-indigo-600 font-medium transition duration-150;
+}
+
+footer {
+  @apply text-center p-4 bg-gray-800 text-white mt-8;
+}
+
+/* ===== Título ===== */
+
+.titulo-depoimentos {
+  @apply flex flex-col items-center justify-center gap-4 mb-10;
+}
+
+.titulo-depoimentos img {
+  @apply max-w-full h-auto;
+  max-height: 100px;
+}
+
+/* ===== Carrossel ===== */
+
+.container-depoimentos {
+  @apply relative max-w-4xl mx-auto overflow-hidden rounded-xl shadow-2xl;
+  height: 400px;
+  background-color: #ffffff;
+}
+
+/* Os radios continuam ocultos visualmente, mas permanecem acessíveis
+   via teclado/leitor de tela (não usamos display:none em cima de foco) */
+.carrossel-controle {
+  @apply sr-only;
+}
+
+.carrossel {
+  @apply relative h-full;
+}
+
+.cards {
+  @apply flex h-full list-none p-0 m-0 transition-transform duration-700 ease-in-out;
+  width: 400%;
+}
+
+.card {
+  @apply w-1/4 flex-shrink-0 flex flex-col items-center justify-center p-8 text-center;
+}
+
+.card .foto {
+  @apply w-24 h-24 rounded-full object-cover border-4 border-indigo-500 mb-4;
+}
+
+.card .nome {
+  @apply text-xl font-bold text-indigo-700 mb-2 m-0;
+}
+
+.card .texto {
+  @apply text-base italic leading-relaxed max-w-md mx-auto m-0;
+  color: #374151;
+}
+
+/* ===== Setas ===== */
+
+.arrow {
+  @apply absolute top-1/2 -translate-y-1/2 text-4xl text-white cursor-pointer select-none px-4 py-2 rounded-full;
+  background-color: rgba(79, 70, 229, 0.7);
+  transition: background-color 0.3s;
+  z-index: 10;
+  display: none;
+}
+
+.arrow:hover,
+.arrow:focus-visible {
+  background-color: rgba(79, 70, 229, 1);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* Antes usava "#card1:checked ~ .carrossel ..." (exige irmãos diretos).
+   Agora usa :has() a partir do container, que funciona independente
+   de quantos níveis de div existem entre o input e o alvo. */
+.container-depoimentos:has(#card1:checked) .arrow[for="card4"],
+.container-depoimentos:has(#card1:checked) .arrow[for="card2"],
+.container-depoimentos:has(#card2:checked) .arrow[for="card1"],
+.container-depoimentos:has(#card2:checked) .arrow[for="card3"],
+.container-depoimentos:has(#card3:checked) .arrow[for="card2"],
+.container-depoimentos:has(#card3:checked) .arrow[for="card4"],
+.container-depoimentos:has(#card4:checked) .arrow[for="card3"],
+.container-depoimentos:has(#card4:checked) .arrow[for="card1"] {
+  display: block;
+}
+
+.container-depoimentos:has(#card1:checked) .cards {
+  transform: translateX(0%);
+}
+
+.container-depoimentos:has(#card2:checked) .cards {
+  transform: translateX(-25%);
+}
+
+.container-depoimentos:has(#card3:checked) .cards {
+  transform: translateX(-50%);
+}
+
+.container-depoimentos:has(#card4:checked) .cards {
+  transform: translateX(-75%);
+}

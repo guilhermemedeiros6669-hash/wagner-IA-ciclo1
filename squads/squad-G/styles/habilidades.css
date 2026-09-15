@@ -1,0 +1,174 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #d3d3d3;
+  background-size: cover;
+  color: #333;
+}
+
+/* ===== Header / Navegação ===== */
+
+header {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0px;
+  margin-top: -110px;
+  margin-bottom: -75px;
+}
+
+header img {
+  height: 375px;
+  width: auto;
+}
+
+.menu-container ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin-top: -75px;
+}
+
+.menu-container ul li a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.menu-container ul li a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Título ===== */
+
+main {
+  padding: 40px;
+  text-align: center;
+}
+
+.logo-habilidades img {
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+  height: auto;
+  margin-top: -250px;
+}
+
+/* ===== Cards de habilidades ===== */
+
+.cards-habilidades {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.cards-lista {
+  display: contents;
+}
+
+.card-habilidade {
+  background-color: #ffffff;
+  width: 260px;
+  border-radius: 40px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.card-habilidade:hover {
+  transform: scale(1.05);
+}
+
+/* .card-habilidade figure agrupa foto + nome; reset da margem padrão do navegador */
+.card-habilidade figure {
+  margin: 0;
+}
+
+.card-habilidade img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 30px;
+  margin-bottom: 15px;
+}
+
+/* Nome da pessoa: era <h3>, agora é <h2> dentro do <figcaption> */
+.card-habilidade h2 {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+/* "Habilidades": era <h4>, agora é <h3> */
+.card-habilidade h3 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.skills-lista {
+  list-style: none;
+}
+
+.skills {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.skills span {
+  font-size: 14px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.progress {
+  width: 100%;
+}
+
+/* <progress> nativo substitui a antiga div com "style=width:X%".
+   O reset de appearance é necessário para poder customizar as cores. */
+.progress-bar {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  height: 8px;
+  border: none;
+  border-radius: 10px;
+}
+
+.progress-bar::-webkit-progress-bar {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.progress-bar::-webkit-progress-value {
+  background-color: #000000;
+  border-radius: 10px;
+}
+
+.progress-bar::-moz-progress-bar {
+  background-color: #000000;
+  border-radius: 10px;
+}
+
+/* ===== Footer ===== */
+
+footer {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 20px;
+  margin-top: 60px;
+  font-size: 15px;
+  font-weight: bold;
+}
