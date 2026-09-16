@@ -87,6 +87,42 @@
     <p>Desenvolvido pelo Grupo de Estudantes (SQUAD G)</p>
     <p>Faculdade Imaculada Conceição do Recife - 2025.</p>
   </footer>
+  
+  <!-- Widget do Chat de IA - Squad G -->
+  <div id="ai-chat-widget" class="ai-chat-widget">
+    <button id="ai-chat-toggle" class="ai-chat-toggle" aria-label="Abrir assistente virtual">
+      🤖
+    </button>
 
+    <div id="ai-chat-box" class="ai-chat-box hidden">
+      <div class="ai-chat-header">
+        <div class="ai-chat-header-info">
+          <span class="ai-status-dot"></span>
+          <h3>Assistente IA - Squad G</h3>
+        </div>
+        <button id="ai-chat-close" class="ai-chat-close" aria-label="Fechar chat">&times;</button>
+      </div>
+
+      <div id="ai-chat-messages" class="ai-chat-messages">
+        <div class="message ai-message">
+          <p>Olá! Sou o assistente virtual do Squad G. Como posso te ajudar hoje?</p>
+        </div>
+      </div>
+
+      <form id="ai-chat-form" class="ai-chat-form">
+        <input 
+          type="text" 
+          id="ai-chat-input" 
+          placeholder="Digite sua dúvida aqui..." 
+          autocomplete="off" 
+          required
+        />
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Script do Chat -->
+  <script src="scripts/chat.js"></script>
 </body>
 </html>
