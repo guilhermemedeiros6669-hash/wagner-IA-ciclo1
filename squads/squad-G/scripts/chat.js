@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Configurações da API do Google Gemini
-    const GEMINI_API_KEY = "AQ.Ab8RN6L9f0sTiqedT8gYSuSvpK3h1NvBeUfeAHQEcQ-ENONw4g"; 
+    const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
   
     const toggleBtn = document.getElementById("ai-chat-toggle");
