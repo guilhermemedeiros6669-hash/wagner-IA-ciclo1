@@ -1,4 +1,4 @@
-/* Estilos base - personalize para seu squad */
+/* ===== Estilos base - CSS Puro ===== */
 
 * {
   box-sizing: border-box;
@@ -8,119 +8,235 @@
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background-color: rgb(210, 208, 208);
+  background-color: #ffffff;
+  color: #374151; /* text-gray-700 */
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: #4b5563; /* text-gray-600 */
+  transition: color 0.15s ease-in-out;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: #4f46e5; /* hover:text-indigo-600 */
 }
 
-/* ===== Header / Navegação ===== */
-/* Regras escopadas a #menu-principal, em vez de aplicar flex/gap
-   a QUALQUER ul, li ou a da página (isso afetaria o menu, os
-   projetos, o formulário, tudo ao mesmo tempo) */
+main {
+  padding-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  main {
+    padding-top: 2rem;
+  }
+}
+
+/* ===== Header / Navegação Ajustado ===== */
+
+header {
+  position: relative;
+  z-index: 50;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column; /* Força o alinhamento vertical (Menu acima, Hero abaixo) */
+  align-items: center;
+  width: 100%;
+}
+
+#menu-principal {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
 
 #menu-principal ul {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  gap: 10px;
+  justify-content: center; /* Centraliza os links do menu */
+  align-items: center;
   list-style: none;
-  margin-bottom: 15px;
+  padding: 0;
+  margin: 0;
+  gap: 1.5rem;
 }
 
 #menu-principal a {
+  color: #4b5563;
+  font-weight: 500;
+  font-size: 0.95rem;
   text-decoration: none;
-  color: black;
+  transition: color 0.15s ease-in-out;
+}
+
+#menu-principal a:hover {
+  color: #4f46e5;
+}
+
+/* Força o menu a permanecer centralizado acima e não ir para o lado no desktop */
+@media (min-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+
+  #menu-principal ul {
+    justify-content: center;
+    gap: 2rem;
+  }
 }
 
 /* ===== Hero ===== */
 
 .hero {
+  background-color: #4338ca; /* bg-indigo-700 */
+  color: #ffffff;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   text-align: center;
-  padding: 40px 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: white;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* Era ".titulo-principal a" (seletor de CLASSE), mas o elemento
-   sempre teve id="titulo-principal", nunca essa classe — a regra
-   nunca funcionou. Além disso, o h1 não contém mais um <a> dentro
-   (o título deixou de ser clicável), então o alvo agora é o próprio h1. */
+@media (min-width: 768px) {
+  .hero {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
 #titulo-principal {
-  font-size: 2.5rem;
-  margin-bottom: 5px;
+  font-size: 1.875rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+@media (min-width: 768px) {
+  #titulo-principal {
+    font-size: 3rem;
+  }
 }
 
 .hero p {
-  font-size: 1.1rem;
-  color: #555;
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+  color: #ffffff;
 }
 
-/* ===== Seções de conteúdo ===== */
+@media (min-width: 768px) {
+  .hero p {
+    font-size: 1.5rem;
+  }
+}
+
+/* ===== Seções de Conteúdo ===== */
 
 .projetos,
 .contato,
 .sobre,
 .curriculo {
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2.5rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .projetos,
+  .contato,
+  .sobre,
+  .curriculo {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 }
 
 .projeto {
-  background-color: white;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #6366f1; /* bg-indigo-500 */
+  margin-bottom: 1.5rem;
 }
 
-/* ===== Formulário de contato ===== */
+.projeto h3,
+.projeto h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Formulário de Contato ===== */
+
+.form-contato {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #6366f1;
+}
 
 .form-contato label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #1f2937;
+  font-size: 0.875rem;
 }
 
 .form-contato input[type="text"],
 .form-contato input[type="email"],
 .form-contato textarea {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1em;
+  padding: 0.75rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #d1d5db; /* border-gray-300 */
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  color: #374151;
+  background-color: #ffffff;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-contato input[type="text"]:focus,
+.form-contato input[type="email"]:focus,
+.form-contato textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 .form-contato button[type="submit"] {
-  background-color: #286ea7;
-  color: white;
-  padding: 10px 20px;
+  background-color: #4338ca; /* bg-indigo-700 */
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.form-contato button[type="submit"]:hover {
+  background-color: #3730a3; /* bg-indigo-800 */
 }
 
 /* ===== Footer ===== */
 
 .footer {
-  background-color: #343a40;
-  color: #bbb;
   text-align: center;
-  padding: 20px 0;
-  font-size: 0.9em;
-  margin-top: 40px;
+  padding: 1rem;
+  background-color: #1f2937; /* gray-800 */
+  color: #ffffff;
+  margin-top: 2rem;
+  font-size: 0.875rem;
 }

@@ -1,3 +1,5 @@
+/* ===== Estilos base - CSS Puro ===== */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,70 +7,119 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #d3d3d3;
-  background-size: cover;
-  color: #333;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: #374151; /* text-gray-700 */
+}
+
+main {
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2.5rem 1rem;
+}
+
+@media (min-width: 768px) {
+  main {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 }
 
 /* ===== Header / Navegação ===== */
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
   display: flex;
-  width: 100%;
-  max-width: 100%;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
-  padding: 10px 0px;
-  margin-top: -110px;
-  margin-bottom: -75px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  header {
+    flex-direction: row;
+  }
 }
 
 header img {
-  height: 375px;
+  height: 2.5rem;
   width: auto;
+  display: block;
+}
+
+.menu-container {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .menu-container {
+    width: auto;
+    margin-top: 0;
+  }
 }
 
 .menu-container ul {
-  list-style: none;
   display: flex;
-  gap: 30px;
-  margin-top: -75px;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 1rem; /* space-x-4 */
+}
+
+@media (min-width: 768px) {
+  .menu-container ul {
+    justify-content: flex-end;
+    gap: 2rem; /* md:space-x-8 */
+  }
 }
 
 .menu-container ul li a {
+  color: #4b5563; /* text-gray-600 */
+  font-weight: 500;
+  font-size: 0.875rem;
   text-decoration: none;
-  color: #000000;
-  font-size: 16px;
-  font-weight: bold;
+  transition: color 0.15s ease-in-out;
 }
 
 .menu-container ul li a:hover {
-  text-decoration: underline;
+  color: #4f46e5; /* hover:text-indigo-600 */
+}
+
+@media (min-width: 768px) {
+  .menu-container ul li a {
+    font-size: 1rem;
+  }
 }
 
 /* ===== Título ===== */
 
-main {
-  padding: 40px;
+.logo-habilidades {
   text-align: center;
+  margin-bottom: 2.5rem;
 }
 
 .logo-habilidades img {
   display: block;
   margin: 0 auto;
-  width: 400px;
+  max-width: 100%;
   height: auto;
-  margin-top: -250px;
+  max-height: 100px;
 }
 
-/* ===== Cards de habilidades ===== */
+/* ===== Cards de Habilidades ===== */
 
 .cards-habilidades {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 1.5rem;
   flex-wrap: wrap;
 }
 
@@ -78,97 +129,108 @@ main {
 
 .card-habilidade {
   background-color: #ffffff;
-  width: 260px;
-  border-radius: 40px;
-  padding: 20px;
+  width: 100%;
+  max-width: 18rem;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
   text-align: center;
-  transition: transform 0.3s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #6366f1; /* Detalhe Indigo padrão dos cards */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .card-habilidade:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* .card-habilidade figure agrupa foto + nome; reset da margem padrão do navegador */
 .card-habilidade figure {
   margin: 0;
 }
 
 .card-habilidade img {
   width: 100%;
-  height: 300px;
+  height: 12rem;
   object-fit: cover;
-  border-radius: 30px;
-  margin-bottom: 15px;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
 }
 
-/* Nome da pessoa: era <h3>, agora é <h2> dentro do <figcaption> */
 .card-habilidade h2 {
-  font-size: 1.5rem;
-  margin: 10px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.25rem;
 }
 
-/* "Habilidades": era <h4>, agora é <h3> */
 .card-habilidade h3 {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: #000000;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4f46e5; /* Indigo-600 */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.25rem;
 }
+
+/* ===== Barras de Progresso / Skills ===== */
 
 .skills-lista {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .skills {
   text-align: left;
-  margin-bottom: 10px;
+  margin-bottom: 0.75rem;
 }
 
 .skills span {
-  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4b5563;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 0.25rem;
 }
 
 .progress {
   width: 100%;
 }
 
-/* <progress> nativo substitui a antiga div com "style=width:X%".
-   O reset de appearance é necessário para poder customizar as cores. */
 .progress-bar {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   width: 100%;
-  height: 8px;
+  height: 0.5rem;
   border: none;
-  border-radius: 10px;
+  border-radius: 9999px;
+  background-color: #e5e7eb; /* Track cinza suave */
+  overflow: hidden;
 }
 
 .progress-bar::-webkit-progress-bar {
-  background-color: #fff;
-  border-radius: 10px;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
 }
 
 .progress-bar::-webkit-progress-value {
-  background-color: #000000;
-  border-radius: 10px;
+  background-color: #4338ca; /* Valor preenchido em Indigo-700 */
+  border-radius: 9999px;
 }
 
 .progress-bar::-moz-progress-bar {
-  background-color: #000000;
-  border-radius: 10px;
+  background-color: #4338ca;
+  border-radius: 9999px;
 }
 
 /* ===== Footer ===== */
 
 footer {
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
   text-align: center;
-  padding: 20px;
-  margin-top: 60px;
-  font-size: 15px;
-  font-weight: bold;
+  padding: 1rem;
+  background-color: #1f2937; /* gray-800 */
+  color: #ffffff;
+  margin-top: 2rem;
+  font-size: 0.875rem;
 }
