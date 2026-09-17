@@ -1,4 +1,12 @@
-/* Estilos base - personalize para seu squad */
+/* ===== Variáveis Globais & Reset ===== */
+:root {
+  --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --sombra-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+  --cor-bg: #d2d0d0;
+  --cor-primaria: #0077cc;
+  --cor-texto: #333333;
+  --cor-footer: #343a40;
+}
 
 * {
   box-sizing: border-box;
@@ -7,14 +15,15 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background-color: rgb(210, 208, 208);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--cor-bg);
+  color: var(--cor-texto);
 }
 
 /* ===== Header / Navegação ===== */
 
 header {
-  background-color: rgb(210, 208, 208);
+  background-color: var(--cor-bg);
   padding: 10px 40px;
   display: flex;
   justify-content: space-between;
@@ -24,6 +33,8 @@ header {
 
 .logo img {
   width: 130px;
+  height: auto;
+  display: block;
 }
 
 .menu-container {
@@ -32,28 +43,25 @@ header {
   align-items: center;
 }
 
-/* Regras do menu escopadas a #menu-principal, em vez de aplicar
-   flex/gap a QUALQUER ul, li ou a da página */
 #menu-principal ul {
   list-style: none;
   display: flex;
   justify-content: flex-end;
   gap: 20px;
-  margin-bottom: 15px;
 }
 
 #menu-principal a {
   text-decoration: none;
-  color: #333;
+  color: var(--cor-texto);
   font-weight: bold;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
 #menu-principal a:hover {
-  color: #0077cc;
+  color: var(--cor-primaria);
 }
 
-/* ===== Layout principal (título + equipe lado a lado) ===== */
+/* ===== Layout Principal ===== */
 
 .principal-container {
   display: flex;
@@ -83,7 +91,8 @@ header {
   margin-bottom: 20px;
 }
 
-/* Lista de integrantes (era .integrantes, agora .equipe-lista na <ul>) */
+/* ===== Lista de Integrantes (Cards) ===== */
+
 .equipe-lista {
   flex: 0 0 60%;
   display: grid;
@@ -98,10 +107,15 @@ header {
   padding: 20px;
   text-align: center;
   box-shadow: var(--sombra-card);
-  transition: transform 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.fotos:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-hover);
 }
 
 .fotos img {
@@ -112,11 +126,12 @@ header {
   object-fit: cover;
 }
 
-/* Ícones de redes sociais (era .contato-icones, agora .redes-sociais na <ul>) */
+/* Redes Sociais nos Cards */
+
 .fotos .redes-sociais {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   margin-top: 15px;
   list-style: none;
 }
@@ -126,8 +141,8 @@ header {
   height: 30px;
   border-radius: 0;
   margin-bottom: 0;
-  object-fit: initial;
-  transition: transform 0.2s;
+  object-fit: contain;
+  transition: transform 0.2s ease;
 }
 
 .fotos .redes-sociais img:hover {
@@ -137,10 +152,36 @@ header {
 /* ===== Footer ===== */
 
 .footer {
-  background-color: #343a40;
+  background-color: var(--cor-footer);
   color: #bbb;
   text-align: center;
   padding: 20px 0;
-  font-size: 0.9em;
+  font-size: 0.9rem;
   margin-top: 40px;
+}
+
+/* ===== Responsividade (Mobile / Tablet) ===== */
+
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .principal-container {
+    flex-direction: column;
+    margin: 20px auto;
+    gap: 20px;
+  }
+
+  .titulo-contatos,
+  .equipe-lista {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .equipe-lista {
+    grid-template-columns: 1fr;
+  }
 }
