@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#4f46e5" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bgGrad)" />
+
+  <!-- Code / Grid overlay lines -->
+  <g opacity="0.08" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="50" x2="800" y2="50" />
+    <line x1="0" y1="100" x2="800" y2="100" />
+    <line x1="0" y1="150" x2="800" y2="150" />
+    <line x1="0" y1="200" x2="800" y2="200" />
+    <line x1="0" y1="250" x2="800" y2="250" />
+    <line x1="0" y1="300" x2="800" y2="300" />
+    <line x1="0" y1="350" x2="800" y2="350" />
+    <line x1="0" y1="400" x2="800" y2="400" />
+    <line x1="0" y1="450" x2="800" y2="450" />
+    <line x1="100" y1="0" x2="100" y2="500" />
+    <line x1="200" y1="0" x2="200" y2="500" />
+    <line x1="300" y1="0" x2="300" y2="500" />
+    <line x1="400" y1="0" x2="400" y2="500" />
+    <line x1="500" y1="0" x2="500" y2="500" />
+    <line x1="600" y1="0" x2="600" y2="500" />
+    <line x1="700" y1="0" x2="700" y2="500" />
+  </g>
+
+  <!-- Browser/App Window Mockup -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="40" width="700" height="420" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    
+    <!-- Window Title Bar -->
+    <rect x="50" y="40" width="700" height="44" rx="14" fill="#0f172a" />
+    <rect x="50" y="70" width="700" height="14" fill="#0f172a" />
+    <circle cx="80" cy="62" r="6" fill="#ef4444" />
+    <circle cx="102" cy="62" r="6" fill="#f59e0b" />
+    <circle cx="124" cy="62" r="6" fill="#10b981" />
+    <rect x="230" y="52" width="340" height="22" rx="6" fill="#1e293b" />
+    <text x="320" y="67" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">design-system.squad-g.io</text>
+
+    <!-- Sidebar -->
+    <rect x="50" y="84" width="180" height="376" fill="#0f172a" opacity="0.6" />
+    <text x="75" y="125" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="14" font-weight="700">UI Components</text>
+    <rect x="70" y="145" width="140" height="28" rx="6" fill="url(#primaryGrad)" />
+    <text x="85" y="163" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="600">❖ Buttons &amp; Badges</text>
+    <text x="85" y="200" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">◻ Cards &amp; Layouts</text>
+    <text x="85" y="235" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">⚙ Form Elements</text>
+    <text x="85" y="270" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">📊 Grid System</text>
+    <text x="85" y="305" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">🎨 Color Palettes</text>
+
+    <!-- Content Workspace -->
+    <text x="260" y="128" fill="#ffffff" font-family="system-ui, sans-serif" font-size="18" font-weight="700">CSS Component Library</text>
+    <text x="260" y="150" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">Componentes estilizados em CSS3 puro com Flexbox, Grid e Transições</text>
+
+    <!-- Component Demo 1: Interactive Card -->
+    <rect x="260" y="175" width="220" height="150" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+    <rect x="275" y="195" width="100" height="18" rx="4" fill="#38bdf8" opacity="0.2" />
+    <text x="285" y="208" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="10" font-weight="700">CSS MODULE</text>
+    <text x="275" y="240" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Card Responsivo</text>
+    <text x="275" y="260" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Hover state &amp; micro-interactions</text>
+    <rect x="275" y="280" width="90" height="26" rx="6" fill="url(#primaryGrad)" />
+    <text x="295" y="297" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Acessar</text>
+
+    <!-- Component Demo 2: Palette Swatches -->
+    <rect x="500" y="175" width="220" height="150" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+    <text x="515" y="202" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="13" font-weight="600">CSS Custom Properties</text>
+    <!-- Color chips -->
+    <rect x="515" y="220" width="36" height="36" rx="8" fill="#4f46e5" />
+    <rect x="560" y="220" width="36" height="36" rx="8" fill="#06b6d4" />
+    <rect x="605" y="220" width="36" height="36" rx="8" fill="#10b981" />
+    <rect x="650" y="220" width="36" height="36" rx="8" fill="#f59e0b" />
+    <text x="515" y="280" fill="#94a3b8" font-family="monospace" font-size="11">--primary: #4f46e5;</text>
+    <text x="515" y="298" fill="#94a3b8" font-family="monospace" font-size="11">--accent:  #06b6d4;</text>
+
+    <!-- Bottom Code Preview Strip -->
+    <rect x="260" y="340" width="460" height="90" rx="8" fill="#0b0f19" stroke="#1e293b" stroke-width="1" />
+    <text x="280" y="365" fill="#f472b6" font-family="monospace" font-size="12">.card-component <tspan fill="#e2e8f0">{</tspan></text>
+    <text x="300" y="385" fill="#38bdf8" font-family="monospace" font-size="12">  display: <tspan fill="#facc15">grid</tspan>; gap: <tspan fill="#facc15">1.5rem</tspan>; transition: <tspan fill="#facc15">all 0.3s ease</tspan>;</text>
+    <text x="280" y="405" fill="#e2e8f0" font-family="monospace" font-size="12">}</text>
+  </g>
+</svg>

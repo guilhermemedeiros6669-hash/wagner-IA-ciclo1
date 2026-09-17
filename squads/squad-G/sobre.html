@@ -7,6 +7,7 @@
   <meta name="description" content="Conheça o Squad G: quem somos e nossa equipe de estudantes de ADS da FICR." />
   <title>Sobre - Squad G</title>
   <link rel="stylesheet" href="styles/sobre.css">
+  <link rel="stylesheet" href="styles/chat.css">
 </head>
 <body>
 
@@ -105,26 +106,65 @@
     <p>Faculdade Imaculada Conceição do Recife - 2025.</p>
   </footer>
 
-  <!-- Widget do Chat de IA - Squad G -->
+    <!-- Widget do Chat de Suporte IA - Squad G -->
   <div id="ai-chat-widget" class="ai-chat-widget">
-    <button id="ai-chat-toggle" class="ai-chat-toggle" aria-label="Abrir assistente virtual">
+    <button id="ai-chat-toggle" class="ai-chat-toggle" aria-label="Abrir assistente virtual de suporte">
       🤖
+      <span class="ai-toggle-pulse"></span>
+      <span class="ai-chat-toggle-tooltip">Suporte Squad G • IA</span>
     </button>
 
-    <div id="ai-chat-box" class="ai-chat-box hidden">
+    <div id="ai-chat-box" class="ai-chat-box hidden" role="region" aria-label="Janela de Suporte Squad G">
       <div class="ai-chat-header">
         <div class="ai-chat-header-info">
-          <span class="ai-status-dot"></span>
-          <h3>Assistente IA - Squad G</h3>
+          <div class="ai-chat-header-avatar">
+            🤖
+            <span class="ai-status-dot"></span>
+          </div>
+          <div class="ai-chat-header-text">
+            <h3>Suporte Squad G</h3>
+            <p>Online • Assistente Gemini IA</p>
+          </div>
         </div>
-        <button id="ai-chat-close" class="ai-chat-close" aria-label="Fechar chat">&times;</button>
+        <div class="ai-chat-header-actions">
+          <button id="ai-chat-reset" class="ai-chat-btn-icon" title="Limpar conversa" aria-label="Limpar conversa">↺</button>
+          <button id="ai-chat-close" class="ai-chat-btn-icon ai-chat-close" title="Fechar chat" aria-label="Fechar chat">&times;</button>
+        </div>
+      </div>
+
+      <!-- Sugestões Rápidas -->
+      <div id="ai-chat-quick-suggestions" class="ai-chat-quick-suggestions">
+        <span class="ai-suggestions-title">Sugestões rápidas</span>
+        <div class="ai-suggestions-list">
+          <button type="button" class="suggestion-chip" data-prompt="Quais são os projetos dos integrantes?">📌 Projetos</button>
+          <button type="button" class="suggestion-chip" data-prompt="Quem são os integrantes do Squad G?">👥 Integrantes</button>
+          <button type="button" class="suggestion-chip" data-prompt="Quais serviços e preços vocês oferecem?">💼 Serviços &amp; Preços</button>
+          <button type="button" class="suggestion-chip" data-prompt="Como posso entrar em contato com a equipe?">📬 Contato</button>
+        </div>
       </div>
 
       <div id="ai-chat-messages" class="ai-chat-messages">
         <div class="message ai-message">
-          <p>Olá! Sou o assistente virtual do Squad G. Como posso te ajudar hoje?</p>
+          <p>Olá! Sou o <strong>assistente de suporte do Squad G</strong>. Como posso te ajudar com nossos projetos, serviços ou equipe hoje?</p>
         </div>
       </div>
+
+      <form id="ai-chat-form" class="ai-chat-form">
+        <div class="ai-chat-input-wrapper">
+          <input 
+            type="text" 
+            id="ai-chat-input" 
+            placeholder="Digite sua dúvida sobre o Squad G..." 
+            autocomplete="off" 
+            required
+          />
+        </div>
+        <button type="submit" class="ai-chat-submit-btn" aria-label="Enviar mensagem">
+          <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+        </button>
+      </form>
+    </div>
+  </div>
 
       <form id="ai-chat-form" class="ai-chat-form">
         <input 

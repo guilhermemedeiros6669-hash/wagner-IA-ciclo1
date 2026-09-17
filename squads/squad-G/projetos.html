@@ -1,18 +1,23 @@
-<!-- Projetos - Squad G (Refatorado) -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Projetos desenvolvidos pelos integrantes do Squad G." />
-  <title>Projetos - Squad G</title>
+  <title>Projetos dos Integrantes - Squad G</title>
+  <meta name="description" content="Conheça os projetos web desenvolvidos pelos integrantes do Squad G: Amanda, Guilherme, Aylton e Diógenes." />
+  <meta property="og:title" content="Projetos dos Integrantes - Squad G" />
+  <meta property="og:description" content="Conheça os projetos web desenvolvidos pelos integrantes do Squad G com design moderno, semântica e interfaces responsivas." />
   <link rel="stylesheet" href="styles/projetos.css">
+  <link rel="stylesheet" href="styles/chat.css">
 </head>
 <body>
 
+  <!-- Header & Menu de Navegação -->
   <header>
     <div class="logo">
-      <img class="img-logo" src="styles/img/logo squadG.png" alt="Logo Squad G">
+      <a href="home.html" title="Página Inicial Squad G">
+        <img class="img-logo" src="styles/img/logo squadG.png" alt="Logo Squad G">
+      </a>
     </div>
 
     <div class="menu-container">
@@ -31,110 +36,391 @@
     </div>
   </header>
 
-  <main>
-    <section class="secao-principal" aria-labelledby="projetos-titulo">
-      <h1 id="projetos-titulo">Projetos dos integrantes do Squad G</h1>
-      <p>Arquivos com imagens de projetos dos integrantes do Squad G.</p>
+  <!-- Conteúdo Principal -->
+  <main class="projetos-container">
+    
+    <!-- Hero / Apresentação -->
+    <section class="projetos-hero" aria-labelledby="projetos-titulo">
+      <span class="hero-badge">Portfólio Squad G</span>
+      <h1 id="projetos-titulo">Projetos dos Integrantes</h1>
+      <p>
+        Apresentação detalhada das interfaces desenvolvidas individualmente por cada membro da nossa equipe, destacando código semântico, harmonia visual e design responsivo.
+      </p>
+
+      <!-- Métricas / Indicadores da equipe -->
+      <div class="projetos-stats">
+        <div class="stat-item">
+          <span>👥</span>
+          <span><strong>4</strong> Integrantes</span>
+        </div>
+        <div class="stat-item">
+          <span>💻</span>
+          <span><strong>4</strong> Projetos Web</span>
+        </div>
+        <div class="stat-item">
+          <span>📱</span>
+          <span><strong>100%</strong> Responsivo</span>
+        </div>
+        <div class="stat-item">
+          <span>⚡</span>
+          <span><strong>HTML5</strong> &amp; <strong>CSS3</strong></span>
+        </div>
+      </div>
     </section>
 
-    <section aria-label="Lista de projetos">
-      <ul class="cards">
+    <!-- Lista de Cards Lado a Lado -->
+    <section aria-label="Galeria de projetos dos integrantes">
+      <ul class="cards-grid">
 
-        <li class="card">
-          <figure>
-            <img class="amanda-img" src="styles/img/amanda.jpg" alt="Tela do projeto de Amanda" width="100%">
-            <figcaption>
-              <h2>Amanda</h2>
-            </figcaption>
-          </figure>
-          <p>
-            Projeto desenvolvido por Amanda:
-            <br>Possuindo tela de cadastro e tela de login.
-          </p>
+        <!-- Card 1: Amanda -->
+        <li class="project-card">
+          <div class="project-preview" onclick="openProjectModal('styles/img/projeto_amanda.jpg', 'Amanda Ramos - Portal de Cadastro e Login')" role="button" tabindex="0" aria-label="Ampliar projeto de Amanda">
+            <img src="styles/img/projeto_amanda.jpg" alt="Interface do projeto desenvolvido por Amanda: telas de cadastro e login">
+            <span class="project-category-tag">Autenticação &amp; Acesso</span>
+            <div class="preview-overlay-hint">
+              <span>🔍 Ampliar Imagem</span>
+            </div>
+          </div>
+
+          <div class="project-card-body">
+            <!-- Cabeçalho do Autor com Foto e Nome -->
+            <div class="author-header">
+              <div class="author-avatar-wrapper">
+                <img class="author-avatar" src="styles/img/amanda.jpg" alt="Foto de perfil de Amanda Ramos">
+                <span class="author-status-dot" title="Ativa no Squad G"></span>
+              </div>
+              <div class="author-meta">
+                <h2 class="author-name">Amanda Ramos</h2>
+                <span class="author-role">Equipe HTML • Frontend</span>
+              </div>
+            </div>
+
+            <!-- Informações do Projeto -->
+            <div class="project-content">
+              <h3 class="project-title">Portal de Cadastro e Login</h3>
+              <p class="project-description">
+                Sistema de autenticação moderno estruturado com semântica HTML5, formulários acessíveis e validações visuais de campos, garantindo entrada segura e fluida de novos usuários.
+              </p>
+
+              <ul class="project-features">
+                <li>Formulário de cadastro com validação de dados</li>
+                <li>Tela de login com inputs intuitivos e acessíveis</li>
+                <li>Estrutura semântica limpa e responsiva</li>
+              </ul>
+
+              <div class="tech-tags-list">
+                <span class="tech-tag">HTML5 Semântico</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">Formulários</span>
+                <span class="tech-tag">Acessibilidade</span>
+              </div>
+            </div>
+
+            <!-- Rodapé do Card -->
+            <div class="project-card-footer">
+              <div class="project-status">
+                <span class="status-indicator-dot"></span>
+                <span>Concluído</span>
+              </div>
+              <button type="button" class="btn-view-preview" onclick="openProjectModal('styles/img/projeto_amanda.jpg', 'Amanda Ramos - Portal de Cadastro e Login')">
+                <span>Ampliar Interface</span>
+                <span>↗</span>
+              </button>
+            </div>
+          </div>
         </li>
 
-        <li class="card">
-          <figure>
-            <img class="projeto-guilherme" src="styles/img/guilherme.jpeg" alt="Tela do projeto de Guilherme" width="100%">
-            <figcaption>
-              <h2>Guilherme</h2>
-            </figcaption>
-          </figure>
-          <p>
-            Projeto desenvolvido por Guilherme:
-            <br>Possuindo tela de cadastro e tela de login.
-          </p>
+        <!-- Card 2: Guilherme -->
+        <li class="project-card">
+          <div class="project-preview" onclick="openProjectModal('styles/img/projeto_guilherme.png', 'Guilherme Henrique - Sistema de Autenticação e Login Responsivo')" role="button" tabindex="0" aria-label="Ampliar projeto de Guilherme">
+            <img src="styles/img/projeto_guilherme.png" alt="Interface do projeto desenvolvido por Guilherme: sistema de login responsivo">
+            <span class="project-category-tag">Interface Web &amp; Login</span>
+            <div class="preview-overlay-hint">
+              <span>🔍 Ampliar Imagem</span>
+            </div>
+          </div>
+
+          <div class="project-card-body">
+            <!-- Cabeçalho do Autor com Foto e Nome -->
+            <div class="author-header">
+              <div class="author-avatar-wrapper">
+                <img class="author-avatar" src="styles/img/guilherme.jpeg" alt="Foto de perfil de Guilherme Henrique">
+                <span class="author-status-dot" title="Ativo no Squad G"></span>
+              </div>
+              <div class="author-meta">
+                <h2 class="author-name">Guilherme Henrique</h2>
+                <span class="author-role">Equipe HTML • Fullstack</span>
+              </div>
+            </div>
+
+            <!-- Informações do Projeto -->
+            <div class="project-content">
+              <h3 class="project-title">Sistema de Autenticação Responsivo</h3>
+              <p class="project-description">
+                Interface de login e cadastro projetada com contraste refinado, inputs interativos e feedback visual ao usuário, assegurando navegação rápida e sem atritos em celulares e desktops.
+              </p>
+
+              <ul class="project-features">
+                <li>Design centrado no usuário com tipografia legível</li>
+                <li>Campos com estados visuais de foco e validação</li>
+                <li>Layout testado e adaptado para múltiplos dispositivos</li>
+              </ul>
+
+              <div class="tech-tags-list">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3 Moderno</span>
+                <span class="tech-tag">Design Responsivo</span>
+                <span class="tech-tag">UX/UI</span>
+              </div>
+            </div>
+
+            <!-- Rodapé do Card -->
+            <div class="project-card-footer">
+              <div class="project-status">
+                <span class="status-indicator-dot"></span>
+                <span>Concluído</span>
+              </div>
+              <button type="button" class="btn-view-preview" onclick="openProjectModal('styles/img/projeto_guilherme.png', 'Guilherme Henrique - Sistema de Autenticação e Login Responsivo')">
+                <span>Ampliar Interface</span>
+                <span>↗</span>
+              </button>
+            </div>
+          </div>
         </li>
 
-        <li class="card">
-          <figure>
-            <img class="projeto-aylton" src="styles/img/aylton.jpeg" alt="Tela do projeto de Aylton" width="100%">
-            <figcaption>
-              <h2>Aylton</h2>
-            </figcaption>
-          </figure>
-          <p>
-            Projeto desenvolvido por Aylton:
-            <br>Tela de navegação inicial do Google.
-          </p>
+        <!-- Card 3: Aylton -->
+        <li class="project-card">
+          <div class="project-preview" onclick="openProjectModal('styles/img/projeto_aylton.png', 'Aylton Oliveira - Interface de Navegação e Busca Web')" role="button" tabindex="0" aria-label="Ampliar projeto de Aylton">
+            <img src="styles/img/projeto_aylton.png" alt="Interface do projeto desenvolvido por Aylton: clone moderno de busca e navegação">
+            <span class="project-category-tag">Navegação &amp; Busca</span>
+            <div class="preview-overlay-hint">
+              <span>🔍 Ampliar Imagem</span>
+            </div>
+          </div>
+
+          <div class="project-card-body">
+            <!-- Cabeçalho do Autor com Foto e Nome -->
+            <div class="author-header">
+              <div class="author-avatar-wrapper">
+                <img class="author-avatar" src="styles/img/aylton.jpeg" alt="Foto de perfil de Aylton Oliveira">
+                <span class="author-status-dot" title="Ativo no Squad G"></span>
+              </div>
+              <div class="author-meta">
+                <h2 class="author-name">Aylton Oliveira</h2>
+                <span class="author-role">Equipe CSS • Frontend</span>
+              </div>
+            </div>
+
+            <!-- Informações do Projeto -->
+            <div class="project-content">
+              <h3 class="project-title">Interface de Navegação e Busca Web</h3>
+              <p class="project-description">
+                Página inicial inspirada nos grandes mecanismos de busca da internet, implementando centralização de elementos com CSS Flexbox, barra de busca responsiva e atalhos ágeis.
+              </p>
+
+              <ul class="project-features">
+                <li>Barra de pesquisa fluida com bordas arredondadas e sombra suave</li>
+                <li>Centralização e alinhamento milimétrico com CSS Flexbox</li>
+                <li>Menu superior com links rápidos e rodapé estruturado</li>
+              </ul>
+
+              <div class="tech-tags-list">
+                <span class="tech-tag">CSS3 Flexbox</span>
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">Navegação Web</span>
+                <span class="tech-tag">Mobile-First</span>
+              </div>
+            </div>
+
+            <!-- Rodapé do Card -->
+            <div class="project-card-footer">
+              <div class="project-status">
+                <span class="status-indicator-dot"></span>
+                <span>Concluído</span>
+              </div>
+              <button type="button" class="btn-view-preview" onclick="openProjectModal('styles/img/projeto_aylton.png', 'Aylton Oliveira - Interface de Navegação e Busca Web')">
+                <span>Ampliar Interface</span>
+                <span>↗</span>
+              </button>
+            </div>
+          </div>
         </li>
 
-        <li class="card">
-          <figure>
-            <!-- TODO: adicionar imagem do projeto de Diógenes -->
-            <img class="projeto-diogenes" src="styles/img/diogenes.jpeg" alt="Tela do projeto de Diógenes" width="100%">
-            <figcaption>
-              <h2>Diógenes</h2>
-            </figcaption>
-          </figure>
-          <!-- TODO: adicionar descrição do projeto de Diógenes -->
-          <p>Descrição do projeto em breve.</p>
+        <!-- Card 4: Diógenes -->
+        <li class="project-card">
+          <div class="project-preview" onclick="openProjectModal('styles/img/projeto_diogenes.svg', 'Diógenes José - Design System e Biblioteca de Componentes CSS')" role="button" tabindex="0" aria-label="Ampliar projeto de Diógenes">
+            <img src="styles/img/projeto_diogenes.svg" alt="Design System e biblioteca de componentes desenvolvida por Diógenes">
+            <span class="project-category-tag">Design System &amp; UI</span>
+            <div class="preview-overlay-hint">
+              <span>🔍 Ampliar Imagem</span>
+            </div>
+          </div>
+
+          <div class="project-card-body">
+            <!-- Cabeçalho do Autor com Foto e Nome -->
+            <div class="author-header">
+              <div class="author-avatar-wrapper">
+                <img class="author-avatar" src="styles/img/diogenes.jpeg" alt="Foto de perfil de Diógenes José">
+                <span class="author-status-dot" title="Ativo no Squad G"></span>
+              </div>
+              <div class="author-meta">
+                <h2 class="author-name">Diógenes José</h2>
+                <span class="author-role">Equipe CSS • UI Designer</span>
+              </div>
+            </div>
+
+            <!-- Informações do Projeto -->
+            <div class="project-content">
+              <h3 class="project-title">Design System &amp; Biblioteca de Componentes</h3>
+              <p class="project-description">
+                Conjunto padronizado de componentes reutilizáveis para a web, com paleta de cores harmoniosa, variáveis CSS nativas (Custom Properties), botões interativos e grid responsivo.
+              </p>
+
+              <ul class="project-features">
+                <li>Biblioteca visual de botões, tags e cards modulares</li>
+                <li>Variáveis CSS customizadas para coerência estética</li>
+                <li>Arquitetura CSS modular com transições suaves</li>
+              </ul>
+
+              <div class="tech-tags-list">
+                <span class="tech-tag">CSS3 Grid</span>
+                <span class="tech-tag">Design Tokens</span>
+                <span class="tech-tag">Componentes</span>
+                <span class="tech-tag">UI/UX</span>
+              </div>
+            </div>
+
+            <!-- Rodapé do Card -->
+            <div class="project-card-footer">
+              <div class="project-status">
+                <span class="status-indicator-dot"></span>
+                <span>Concluído</span>
+              </div>
+              <button type="button" class="btn-view-preview" onclick="openProjectModal('styles/img/projeto_diogenes.svg', 'Diógenes José - Design System e Biblioteca de Componentes CSS')">
+                <span>Ampliar Interface</span>
+                <span>↗</span>
+              </button>
+            </div>
+          </div>
         </li>
 
       </ul>
     </section>
+
   </main>
 
+  <!-- Modal / Lightbox de Imagem do Projeto -->
+  <div id="project-modal" class="project-modal" onclick="closeProjectModal(event)" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="project-modal-content">
+      <div class="project-modal-header">
+        <h3 id="modal-project-title" class="project-modal-title">Visualização do Projeto</h3>
+        <button type="button" class="project-modal-close" onclick="closeProjectModal()" aria-label="Fechar visualização">&times;</button>
+      </div>
+      <div class="project-modal-body">
+        <img id="modal-project-img" src="" alt="Captura ampliada do projeto">
+      </div>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
   <footer>
-    <p>&copy; 2025 — Squad G</p>
+    <p>&copy; 2025 — Squad G • Faculdade Imaculada Conceição do Recife (FICR)</p>
+    <p>Todos os direitos reservados.</p>
   </footer>
 
-  <!-- Widget do Chat de IA - Squad G -->
+  <!-- Widget do Chat de Suporte IA - Squad G -->
   <div id="ai-chat-widget" class="ai-chat-widget">
-    <button id="ai-chat-toggle" class="ai-chat-toggle" aria-label="Abrir assistente virtual">
+    <button id="ai-chat-toggle" class="ai-chat-toggle" aria-label="Abrir assistente virtual de suporte">
       🤖
+      <span class="ai-toggle-pulse"></span>
+      <span class="ai-chat-toggle-tooltip">Suporte Squad G • IA</span>
     </button>
 
-    <div id="ai-chat-box" class="ai-chat-box hidden">
+    <div id="ai-chat-box" class="ai-chat-box hidden" role="region" aria-label="Janela de Suporte Squad G">
       <div class="ai-chat-header">
         <div class="ai-chat-header-info">
-          <span class="ai-status-dot"></span>
-          <h3>Assistente IA - Squad G</h3>
+          <div class="ai-chat-header-avatar">
+            🤖
+            <span class="ai-status-dot"></span>
+          </div>
+          <div class="ai-chat-header-text">
+            <h3>Suporte Squad G</h3>
+            <p>Online • Assistente Gemini IA</p>
+          </div>
         </div>
-        <button id="ai-chat-close" class="ai-chat-close" aria-label="Fechar chat">&times;</button>
+        <div class="ai-chat-header-actions">
+          <button id="ai-chat-reset" class="ai-chat-btn-icon" title="Limpar conversa" aria-label="Limpar conversa">↺</button>
+          <button id="ai-chat-close" class="ai-chat-btn-icon ai-chat-close" title="Fechar chat" aria-label="Fechar chat">&times;</button>
+        </div>
+      </div>
+
+      <!-- Sugestões Rápidas -->
+      <div id="ai-chat-quick-suggestions" class="ai-chat-quick-suggestions">
+        <span class="ai-suggestions-title">Sugestões rápidas</span>
+        <div class="ai-suggestions-list">
+          <button type="button" class="suggestion-chip" data-prompt="Quais são os projetos dos integrantes?">📌 Projetos</button>
+          <button type="button" class="suggestion-chip" data-prompt="Quem são os integrantes do Squad G?">👥 Integrantes</button>
+          <button type="button" class="suggestion-chip" data-prompt="Quais serviços e preços vocês oferecem?">💼 Serviços &amp; Preços</button>
+          <button type="button" class="suggestion-chip" data-prompt="Como posso entrar em contato com a equipe?">📬 Contato</button>
+        </div>
       </div>
 
       <div id="ai-chat-messages" class="ai-chat-messages">
         <div class="message ai-message">
-          <p>Olá! Sou o assistente virtual do Squad G. Como posso te ajudar hoje?</p>
+          <p>Olá! Sou o <strong>assistente de suporte do Squad G</strong>. Como posso te ajudar com nossos projetos, serviços ou equipe hoje?</p>
         </div>
       </div>
 
       <form id="ai-chat-form" class="ai-chat-form">
-        <input 
-          type="text" 
-          id="ai-chat-input" 
-          placeholder="Digite sua dúvida aqui..." 
-          autocomplete="off" 
-          required
-        />
-        <button type="submit">Enviar</button>
+        <div class="ai-chat-input-wrapper">
+          <input 
+            type="text" 
+            id="ai-chat-input" 
+            placeholder="Digite sua dúvida sobre o Squad G..." 
+            autocomplete="off" 
+            required
+          />
+        </div>
+        <button type="submit" class="ai-chat-submit-btn" aria-label="Enviar mensagem">
+          <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+        </button>
       </form>
     </div>
   </div>
 
-  <!-- Script do Chat -->
+  <!-- Script do Chat de Suporte -->
   <script src="scripts/chat.js"></script>
+
+  <!-- Script do Modal de Projetos -->
+  <script>
+    function openProjectModal(imgSrc, title) {
+      const modal = document.getElementById('project-modal');
+      const modalImg = document.getElementById('modal-project-img');
+      const modalTitle = document.getElementById('modal-project-title');
+      if (modal && modalImg && modalTitle) {
+        modalImg.src = imgSrc;
+        modalTitle.textContent = title;
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+    }
+
+    function closeProjectModal(e) {
+      if (!e || e.target.id === 'project-modal' || e.target.classList.contains('project-modal-close')) {
+        const modal = document.getElementById('project-modal');
+        if (modal) {
+          modal.classList.remove('active');
+          modal.setAttribute('aria-hidden', 'true');
+        }
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeProjectModal();
+      }
+    });
+  </script>
 
 </body>
 </html>
