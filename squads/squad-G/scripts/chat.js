@@ -18,10 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const isHidden = chatBox.classList.contains("hidden");
       if (isHidden) {
         chatBox.classList.remove("hidden");
+        toggleBtn.setAttribute("aria-expanded", "true");
         if (chatInput) chatInput.focus();
         scrollToBottom();
       } else {
         chatBox.classList.add("hidden");
+        toggleBtn.setAttribute("aria-expanded", "false");
       }
     });
   }
@@ -29,8 +31,21 @@ document.addEventListener("DOMContentLoaded", () => {
   if (closeBtn && chatBox) {
     closeBtn.addEventListener("click", () => {
       chatBox.classList.add("hidden");
+      if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
+      if (toggleBtn) toggleBtn.focus();
     });
   }
+
+  // Tecla Escape fecha chat
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && chatBox && !chatBox.classList.contains("hidden")) {
+      chatBox.classList.add("hidden");
+      if (toggleBtn) {
+        toggleBtn.setAttribute("aria-expanded", "false");
+        toggleBtn.focus();
+      }
+    }
+  });
 
   // Limpar conversa
   if (resetBtn && messagesContainer) {

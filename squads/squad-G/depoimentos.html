@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Depoimentos de clientes sobre os projetos desenvolvidos pelo Squad G." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Depoimentos de clientes sobre os projetos desenvolvidos pelo Squad G.">
   <title>Depoimentos - Squad G</title>
   <link rel="stylesheet" href="styles/depoimentos.css">
   <link rel="stylesheet" href="styles/chat.css">
@@ -119,13 +119,13 @@
 
     <!-- Widget do Chat de Suporte IA - Squad G -->
   <div id="ai-chat-widget" class="ai-chat-widget">
-    <button id="ai-chat-toggle" class="ai-chat-toggle" aria-label="Abrir assistente virtual de suporte">
+    <button type="button" id="ai-chat-toggle" class="ai-chat-toggle" aria-label="Abrir assistente virtual de suporte">
       🤖
       <span class="ai-toggle-pulse"></span>
       <span class="ai-chat-toggle-tooltip">Suporte Squad G • IA</span>
     </button>
 
-    <div id="ai-chat-box" class="ai-chat-box hidden" role="region" aria-label="Janela de Suporte Squad G">
+    <section id="ai-chat-box" class="ai-chat-box hidden" aria-label="Janela de Suporte Squad G">
       <div class="ai-chat-header">
         <div class="ai-chat-header-info">
           <div class="ai-chat-header-avatar">
@@ -138,8 +138,8 @@
           </div>
         </div>
         <div class="ai-chat-header-actions">
-          <button id="ai-chat-reset" class="ai-chat-btn-icon" title="Limpar conversa" aria-label="Limpar conversa">↺</button>
-          <button id="ai-chat-close" class="ai-chat-btn-icon ai-chat-close" title="Fechar chat" aria-label="Fechar chat">&times;</button>
+          <button type="button" id="ai-chat-reset" class="ai-chat-btn-icon" title="Limpar conversa" aria-label="Limpar conversa">↺</button>
+          <button type="button" id="ai-chat-close" class="ai-chat-btn-icon ai-chat-close" title="Fechar chat" aria-label="Fechar chat">&times;</button>
         </div>
       </div>
 
@@ -162,32 +162,18 @@
 
       <form id="ai-chat-form" class="ai-chat-form">
         <div class="ai-chat-input-wrapper">
-          <input 
-            type="text" 
-            id="ai-chat-input" 
-            placeholder="Digite sua dúvida sobre o Squad G..." 
-            autocomplete="off" 
-            required
-          />
+          <input
+            type="text"
+            id="ai-chat-input"
+            placeholder="Digite sua dúvida sobre o Squad G..."
+            autocomplete="off"
+            required>
         </div>
         <button type="submit" class="ai-chat-submit-btn" aria-label="Enviar mensagem">
           <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
         </button>
       </form>
-    </div>
-  </div>
-
-      <form id="ai-chat-form" class="ai-chat-form">
-        <input 
-          type="text" 
-          id="ai-chat-input" 
-          placeholder="Digite sua dúvida aqui..." 
-          autocomplete="off" 
-          required
-        />
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
+    </section>
   </div>
 
   <!-- Script do Chat -->

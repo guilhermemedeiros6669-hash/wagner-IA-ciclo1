@@ -16,7 +16,16 @@ app.use(express.json());
 // Lazy-initialize Gemini client
 let aiClient = null;
 function getAIClient() {
-  const apiKey = process.env.GEMINI_API_KEY;
+  let apiKey = (process.env.GEMINI_API_KEY || '').trim();
+  if (!apiKey && fs.existsSync(path.join(__dirname, '.env'))) {
+    try {
+      const envContent = fs.readFileSync(path.join(__dirname, '.env'), 'utf-8');
+      const match = envContent.match(/^GEMINI_API_KEY=(.*)$/m);
+      if (match && match[1]) {
+        apiKey = match[1].trim().replace(/^["']|["']$/g, '');
+      }
+    } catch (_) {}
+  }
   if (!apiKey) return null;
   if (!aiClient) {
     aiClient = new GoogleGenAI({ apiKey });
@@ -25,40 +34,20 @@ function getAIClient() {
 }
 
 const SQUAD_G_SUPPORT_PROMPT = `
-Você é o Assistente Oficial de Suporte e Atendimento com Inteligência Artificial do Squad G.
-O Squad G é uma equipe de desenvolvimento web e software formada na FICR (Faculdade Imaculada Conceição do Recife).
+Você é o Assistente Oficial do Squad G (equipe de desenvolvimento web da FICR).
 
-Informações detalhadas sobre o Squad G para responder aos usuários:
+INFORMAÇÕES CHAVE DO SQUAD G:
+- Integrantes: Amanda Ramos (HTML/Acessibilidade/Formulários), Guilherme Henrique (Frontend/Autenticação/UX), Aylton Oliveira (CSS/Flexbox/Navegação), Diógenes José (CSS3/UI/Design System).
+- Projetos: Portal de Acesso (Amanda), Autenticação Responsiva (Guilherme), Navegação Web (Aylton), Design System CSS (Diógenes), Case Alpha Corp (redução de 40% em custos).
+- Planos: Start (R$ 899 - landing page e SEO), Pro (R$ 1.899 - até 5 páginas), Enterprise (R$ 3.499 - sob medida).
+- Habilidades: HTML5, CSS3, JavaScript ES6+, Git/GitHub, Metodologias Ágeis.
+- Contato: Pelo formulário no site ou redes sociais da equipe.
 
-1. A Equipe e seus Membros:
-   - Amanda Ramos: Integrante da equipe de desenvolvimento Frontend e HTML. Especialista em estruturação de formulários, acessibilidade e interfaces limpas. Criou o projeto "Portal de Acesso e Cadastro".
-   - Guilherme Henrique (25 anos): Desenvolvedor Frontend e HTML, focado em lógica de validação, interfaces modernas e experiência do usuário. Criou o projeto "Sistema de Autenticação e Login Responsivo".
-   - Aylton Oliveira (20 anos): Desenvolvedor Frontend e CSS, com grande habilidade em layout responsivo, flexbox e navegação intuitiva. Criou o projeto "Interface de Navegação e Busca Web".
-   - Diógenes José (34 anos): Desenvolvedor Frontend e UI Designer da equipe de CSS, focado em padronização visual, hierarquia tipográfica e Design System em CSS3. Criou o projeto "Design System & Biblioteca de Componentes CSS".
-
-2. Projetos Desenvolvidos:
-   - Portal de Cadastro e Login (Amanda): Sistema completo de entrada de usuários com validações, semântica HTML5 e campos acessíveis.
-   - Sistema de Autenticação Responsivo (Guilherme): Interface de autenticação moderna adaptável a qualquer dispositivo (desktop, tablet e mobile).
-   - Interface de Navegação e Busca Web (Aylton): Estrutura de navegação limpa inspirada nos principais mecanismos de busca da web.
-   - Design System e Biblioteca de Componentes (Diógenes): Conjunto reutilizável de botões, cartões, formulários e paleta de cores harmoniosa em CSS3.
-   - Case de Sucesso (Alpha Corp): Otimização operacional e financeira que gerou 40% de redução em custos operacionais e aumentou a produtividade da equipe em 25%.
-
-3. Serviços Oferecidos pelo Squad G:
-   - Plano Start (R$ 899,00): Ideal para pequenos negócios, landing page responsiva, formulário de contato integrado e SEO básico.
-   - Plano Pro (R$ 1.899,00): Portfólio ou website institucional completo (até 5 páginas), animações modernas, design personalizado e otimização para mobile.
-   - Plano Enterprise (R$ 3.499,00): Solução personalizada completa, suporte prioritário, design system sob medida e integração com APIs.
-
-4. Habilidades Técnicas:
-   - HTML5 Semântico, CSS3 Moderno (Flexbox, Grid, Animações), JavaScript ES6+, Git/GitHub, Metodologias Ágeis (Scrum), UI/UX Design e Responsividade Mobile-First.
-
-5. Contato:
-   - Podem entrar em contato pelo formulário na página de Contato ou através de redes sociais (LinkedIn, Instagram) e e-mail institucional da equipe.
-
-Diretrizes de Atendimento do Suporte:
-- Seja muito educado, acolhedor, profissional e prestativo.
-- Responda em português do Brasil com clareza e concisão.
-- Utilize tópicos com marcadores (* ou -) e destaques em negrito (**termo**) para tornar a resposta fácil de ler.
-- Se o usuário perguntar sobre preços ou como contratar, apresente os planos e direcione para a página de Serviços ou Contato.
+DIRETRIZES DE RESPOSTA (OBRIGATÓRIO):
+- RESPOSTAS CURTAS E RESUMIDAS: Limite sua resposta a no máximo 2 a 4 frases diretas ou tópicos curtos (máximo 40 a 60 palavras).
+- Seja objetivo e vá direto ao ponto solicitado, sem introduções prolixas, enrolação ou despedidas longas.
+- Use negrito (**termo**) nas palavras-chave para leitura rápida.
+- Mantenha o tom profissional, amigável e conciso.
 `;
 
 // Health check endpoint
@@ -67,6 +56,66 @@ app.get('/api/health', (req, res) => {
 });
 
 // Chat API endpoint for Gemini Support AI
+const GEMINI_MODELS = ['gemini-3.8-flash', 'gemini-flash-latest', 'gemini-3.1-flash-lite'];
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Fallback inteligente conciso baseado na base de conhecimento local
+function generateLocalKnowledgeReply(userMessage) {
+  const msg = (userMessage || '').toLowerCase();
+
+  if (msg.includes('projeto') || msg.includes('trabalho') || msg.includes('portfolio') || msg.includes('portfólio')) {
+    return `Projetos do **Squad G**:
+* **Portal de Acesso**: formulários acessíveis (Amanda);
+* **Autenticação Responsiva**: interface e UX (Guilherme);
+* **Navegação & Busca Web**: layout ágil em Flexbox (Aylton);
+* **Design System CSS**: componentes e padrões visuais (Diógenes).
+Confira detalhes na aba **Projetos**!`;
+  }
+
+  if (msg.includes('integrante') || msg.includes('equipe') || msg.includes('membro') || msg.includes('quem é') || msg.includes('quem sao') || msg.includes('quem são')) {
+    return `Integrantes do **Squad G**:
+* **Amanda Ramos**: Frontend, HTML e acessibilidade;
+* **Guilherme Henrique**: Frontend, lógica e UX;
+* **Aylton Oliveira**: Frontend, CSS e layout responsivo;
+* **Diógenes José**: UI Designer e Design System.
+Saiba mais na aba **Sobre Nós**!`;
+  }
+
+  if (msg.includes('preço') || msg.includes('preco') || msg.includes('quanto custa') || msg.includes('plano') || msg.includes('valor') || msg.includes('serviço') || msg.includes('servico')) {
+    return `Nossos planos de desenvolvimento:
+* **Start (R$ 899)**: Landing page responsiva e SEO;
+* **Pro (R$ 1.899)**: Website de até 5 páginas;
+* **Enterprise (R$ 3.499)**: Solução completa sob medida.
+Consulte mais detalhes na aba **Serviços**!`;
+  }
+
+  if (msg.includes('contato') || msg.includes('falar') || msg.includes('contratar') || msg.includes('email') || msg.includes('e-mail') || msg.includes('mensagem')) {
+    return `Para falar com o **Squad G**:
+* Envie mensagem pela aba **Contato**;
+* Acesse as redes sociais da equipe (LinkedIn, Instagram);
+* Solicite um orçamento na aba **Serviços**.`;
+  }
+
+  if (msg.includes('habilidade') || msg.includes('tecnologia') || msg.includes('linguagem') || msg.includes('stack')) {
+    return `Stack do **Squad G**:
+* **HTML5 Semântico** e acessibilidade;
+* **CSS3 Avançado** (Flexbox, Grid e animações);
+* **JavaScript ES6+** e consumo de APIs;
+* **Git/GitHub** e Scrum.
+Veja níveis técnicos na aba **Habilidades**!`;
+  }
+
+  return `Olá! Posso te ajudar com:
+* **Projetos** dos integrantes;
+* **Equipe** e especialidades;
+* **Planos & Preços** (Start, Pro, Enterprise);
+* **Contato** e contratação.
+Como posso ajudar?`;
+}
+
 app.post('/api/chat', async (req, res) => {
   try {
     const { message, history } = req.body;
@@ -76,9 +125,9 @@ app.post('/api/chat', async (req, res) => {
 
     const ai = getAIClient();
     if (!ai) {
-      return res.json({
-        reply: 'Olá! Sou o assistente virtual do Squad G. Para ativar respostas inteligentes em tempo real com o modelo Gemini, configure a variável de ambiente GEMINI_API_KEY no menu de configurações.'
-      });
+      // Sem chave de API: responde com a base de conhecimento local
+      const localReply = generateLocalKnowledgeReply(message);
+      return res.json({ reply: localReply });
     }
 
     // Construção de histórico multi-turn seguro
@@ -99,34 +148,57 @@ app.post('/api/chat', async (req, res) => {
       parts: [{ text: message }]
     });
 
-    let response;
-    try {
-      response = await ai.models.generateContent({
-        model: 'gemini-3.8-flash',
-        contents,
-        config: {
-          systemInstruction: SQUAD_G_SUPPORT_PROMPT
+    let reply = null;
+    let lastError = null;
+
+    // Tentar modelos recomendados com fallback em cascata e tratamento de 503/429
+    for (const modelName of GEMINI_MODELS) {
+      try {
+        const generatePromise = ai.models.generateContent({
+          model: modelName,
+          contents,
+          config: {
+            systemInstruction: SQUAD_G_SUPPORT_PROMPT,
+            maxOutputTokens: 200,
+            temperature: 0.3
+          }
+        });
+
+        const timeoutPromise = new Promise((_, reject) =>
+          setTimeout(() => reject(new Error(`Timeout de 6s com ${modelName}`)), 6000)
+        );
+
+        const response = await Promise.race([generatePromise, timeoutPromise]);
+
+        if (response && response.text) {
+          reply = response.text;
+          break;
         }
-      });
-    } catch (modelErr) {
-      // Fallback para gemini-3.6-flash se necessário
-      console.warn('Tentando fallback para gemini-3.6-flash devido a:', modelErr.message);
-      response = await ai.models.generateContent({
-        model: 'gemini-3.6-flash',
-        contents,
-        config: {
-          systemInstruction: SQUAD_G_SUPPORT_PROMPT
+      } catch (err) {
+        lastError = err;
+        const errStr = String(err && (err.message || err.status || ''));
+        const isUnavailable = errStr.includes('503') || errStr.includes('UNAVAILABLE') || errStr.includes('high demand') || errStr.includes('429');
+        
+        console.warn(`Tentativa com ${modelName} falhou (${err.status || 'erro'}): ${err.message || err}. Tentando próximo modelo...`);
+        
+        if (isUnavailable) {
+          await sleep(250); // Breve espera antes do próximo modelo
         }
-      });
+      }
     }
 
-    const reply = response.text || 'Desculpe, não consegui obter uma resposta.';
+    // Se todos os modelos do Gemini falharam ou estão indisponíveis temporariamente (503 alta demanda), usar fallback local inteligente
+    if (!reply) {
+      console.warn('Modelos Gemini indisponíveis temporariamente. Acionando fallback da base de conhecimento do Squad G.');
+      reply = generateLocalKnowledgeReply(message);
+    }
+
     res.json({ reply });
   } catch (err) {
-    console.error('Erro na API do Gemini:', err);
-    res.status(500).json({
-      reply: 'Desculpe, ocorreu um erro ao consultar o suporte do Squad G. Verifique a chave de API ou tente novamente em instantes.'
-    });
+    console.error('Erro no processamento do chat:', err);
+    // Mesmo em exceção inesperada, nunca deixar o usuário desassistido
+    const fallbackReply = generateLocalKnowledgeReply(req.body?.message || '');
+    res.json({ reply: fallbackReply });
   }
 });
 

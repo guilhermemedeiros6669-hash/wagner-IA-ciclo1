@@ -1,5 +1,4 @@
-/* ===== Estilos base - CSS Puro ===== */
-
+/* ===== 1. Reset e Estilos Globais (Padrão Projetos) ===== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,132 +6,170 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background-color: #ffffff;
-  color: #374151; /* text-gray-700 */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8fafc;
+  color: #334155;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-main {
-  max-width: 64rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2.5rem 1rem;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-@media (min-width: 768px) {
-  main {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
+a {
+  text-decoration: none;
+  color: #475569;
+  transition: color 0.15s ease-in-out;
 }
 
-/* ===== Header / Navegação ===== */
+a:hover {
+  color: #4f46e5;
+}
 
+/* ===== 2. Header e Navegação (Padrão Projetos) ===== */
 header {
   position: sticky;
   top: 0;
   z-index: 50;
   background-color: #ffffff;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  padding: 0.875rem 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
   header {
     flex-direction: row;
+    justify-content: space-between;
   }
 }
 
 .logo img {
   height: 2.5rem;
   width: auto;
-  display: block;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .logo img {
+    margin-bottom: 0;
+  }
 }
 
 .menu-container {
   width: 100%;
-  margin-top: 0.5rem;
 }
 
 @media (min-width: 768px) {
   .menu-container {
     width: auto;
-    margin-top: 0;
   }
 }
 
+#menu-principal ul,
 .nav ul {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 1rem; /* space-x-4 */
+  gap: 1.25rem;
 }
 
-@media (min-width: 768px) {
-  .nav ul {
-    justify-content: flex-end;
-    gap: 2rem; /* md:space-x-8 */
-  }
-}
-
+#menu-principal a,
 .nav a {
-  color: #4b5563; /* text-gray-600 */
+  color: #475569;
   font-weight: 500;
-  transition: color 0.15s ease-in-out;
-  font-size: 0.875rem;
-  text-decoration: none;
+  font-size: 0.925rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  display: inline-block;
 }
 
-.nav a:hover {
-  color: #4f46e5; /* hover:text-indigo-600 */
+#menu-principal a:hover,
+#menu-principal a[aria-current="page"],
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: #4f46e5;
+  background-color: #eef2ff;
+  font-weight: 600;
 }
 
-@media (min-width: 768px) {
-  .nav a {
-    font-size: 1rem;
-  }
+/* ===== 3. Estrutura Principal ===== */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem 1.5rem;
 }
-
-/* ===== Título ===== */
 
 .titulo-depoimentos {
+  text-align: center;
+  margin-bottom: 3.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
-  text-align: center;
 }
 
 .titulo-depoimentos img {
-  max-width: 100%;
-  height: auto;
-  max-height: 100px;
+  max-height: 80px;
+  width: auto;
+  margin-bottom: 1rem;
+  opacity: 0.9;
 }
 
-/* ===== Carrossel ===== */
+#depoimentos-titulo {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
 
+@media (min-width: 768px) {
+  #depoimentos-titulo {
+    font-size: 2.75rem;
+  }
+}
+
+#depoimentos-titulo::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 28px;
+  background-color: #4f46e5;
+  border-radius: 9999px;
+}
+
+/* ===== 4. Carrossel de Depoimentos ===== */
 .container-depoimentos {
   position: relative;
-  max-width: 56rem; /* max-w-4xl */
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 800px;
+  margin: 0 auto;
   overflow: hidden;
-  border-radius: 0.75rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  height: 400px;
+  border-radius: 20px;
   background-color: #ffffff;
-  border-top: 4px solid #6366f1; /* Detalhe Indigo idêntico às seções */
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  min-height: 420px;
 }
 
-/* Acessibilidade dos inputs de controle */
+/* Acessibilidade dos controles */
 .carrossel-controle {
   position: absolute;
   width: 1px;
@@ -156,7 +193,7 @@ header {
   list-style: none;
   padding: 0;
   margin: 0;
-  transition: transform 0.7s ease-in-out;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   width: 400%;
 }
 
@@ -167,72 +204,95 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 3.5rem 3rem;
   text-align: center;
+  position: relative;
+}
+
+.card::before {
+  content: "“";
+  font-family: Georgia, serif;
+  font-size: 5rem;
+  color: #e2e8f0;
+  line-height: 1;
+  position: absolute;
+  top: 1.5rem;
+  left: 3rem;
+  pointer-events: none;
 }
 
 .card .foto {
-  width: 6rem;
-  height: 6rem;
-  border-radius: 9999px;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #6366f1; /* bg-indigo-500 */
-  margin-bottom: 1rem;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  margin-bottom: 1.25rem;
+  background-color: #e2e8f0;
 }
 
 .card .nome {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  color: #4338ca; /* bg-indigo-700 */
+  color: #0f172a;
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
 }
 
 .card .texto {
-  font-size: 1rem;
-  font-style: italic;
-  line-height: 1.625;
-  max-width: 28rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  margin-bottom: 0;
-  color: #374151; /* text-gray-700 */
+  font-size: 1.05rem;
+  font-style: normal;
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto;
+  color: #475569;
 }
 
-/* ===== Setas ===== */
-
+/* ===== 5. Setas de Navegação ===== */
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 2.25rem;
-  color: #ffffff;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-size: 1.25rem;
+  font-weight: 700;
   cursor: pointer;
   user-select: none;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  background-color: rgba(67, 56, 202, 0.75); /* Indigo com transparência */
-  transition: background-color 0.3s ease-in-out;
-  z-index: 10;
   display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+  line-height: 1;
+  text-align: center;
+  padding-bottom: 2px;
 }
 
 .arrow:hover,
 .arrow:focus-visible {
-  background-color: rgba(67, 56, 202, 1);
+  background-color: #4f46e5;
+  color: #ffffff;
+  border-color: #4f46e5;
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3);
 }
 
 .prev {
-  left: 10px;
+  left: 16px;
 }
 
 .next {
-  right: 10px;
+  right: 16px;
 }
 
 /* Controle de visibilidade das setas e transição dos cards via :has() */
-
 .container-depoimentos:has(#card1:checked) .arrow[for="card4"],
 .container-depoimentos:has(#card1:checked) .arrow[for="card2"],
 .container-depoimentos:has(#card2:checked) .arrow[for="card1"],
@@ -241,7 +301,7 @@ header {
 .container-depoimentos:has(#card3:checked) .arrow[for="card4"],
 .container-depoimentos:has(#card4:checked) .arrow[for="card3"],
 .container-depoimentos:has(#card4:checked) .arrow[for="card1"] {
-  display: block;
+  display: flex;
 }
 
 .container-depoimentos:has(#card1:checked) .cards {
@@ -260,13 +320,17 @@ header {
   transform: translateX(-75%);
 }
 
-/* ===== Footer ===== */
-
+/* ===== 6. Footer (Padrão Projetos) ===== */
 footer {
   text-align: center;
-  padding: 1rem;
-  background-color: #1f2937; /* gray-800 */
-  color: #ffffff;
-  margin-top: 2rem;
+  padding: 2.25rem 1.5rem;
+  background-color: #0f172a;
+  color: #94a3b8;
+  margin-top: auto;
   font-size: 0.875rem;
+  border-top: 1px solid #1e293b;
+}
+
+footer p {
+  margin: 0.25rem 0;
 }

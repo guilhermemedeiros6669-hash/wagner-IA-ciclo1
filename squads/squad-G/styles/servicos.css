@@ -1,138 +1,339 @@
-/* Estilos base - personalize para seu squad */
-
+/* ===== 1. Reset e Estilos Globais (Padrão Projetos) ===== */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background-color: #d3d3d3;
-    color: #333;
-  }
-  
-  /* ===== Header / Navegação ===== */
-  /* Esta página ganhou header/nav na refatoração do HTML (para ficar
-     consistente com as outras páginas do site), então esses estilos
-     são novos — não existiam no CSS original. */
-  
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8fafc;
+  color: #334155;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: #475569;
+  transition: color 0.15s ease-in-out;
+}
+
+a:hover {
+  color: #4f46e5;
+}
+
+/* ===== 2. Header e Navegação (Padrão Projetos) ===== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  padding: 0.875rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
   header {
-    display: flex;
-    width: 100%;
-    align-items: center;
+    flex-direction: row;
     justify-content: space-between;
-    padding: 10px 40px;
-    background-color: #d3d3d3;
   }
-  
+}
+
+.img-logo {
+  height: 2.5rem;
+  width: auto;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
   .img-logo {
-    height: 60px;
+    margin-bottom: 0;
+  }
+}
+
+.menu-container {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .menu-container {
     width: auto;
   }
-  
-  .menu-container ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+}
+
+#menu-principal ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 1.25rem;
+}
+
+#menu-principal a {
+  color: #475569;
+  font-weight: 500;
+  font-size: 0.925rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  display: inline-block;
+}
+
+#menu-principal a:hover,
+#menu-principal a[aria-current="page"] {
+  color: #4f46e5;
+  background-color: #eef2ff;
+  font-weight: 600;
+}
+
+/* ===== 3. Estrutura Principal de Serviços ===== */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem 1.5rem;
+}
+
+#servicos-titulo {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  #servicos-titulo {
+    font-size: 2.75rem;
   }
-  
-  .menu-container ul li a {
-    text-decoration: none;
-    color: #000000;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .menu-container ul li a:hover {
-    text-decoration: underline;
-  }
-  
-  /* ===== Conteúdo ===== */
-  
-  main {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 20px;
-  }
-  
-  h1 {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 60px;
-    color: rgb(156, 66, 240);
-  }
-  
-  h2 {
-    margin-bottom: 10px;
-    color: rgb(156, 66, 240);
-  }
-  
-  /* Era ".design" (só a primeira das 3 divs de serviço, malformada).
-     Agora estiliza todos os itens da <ul class="servicos-lista"> de uma vez. */
+}
+
+#servicos-titulo::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 28px;
+  background-color: #4f46e5;
+  border-radius: 9999px;
+}
+
+/* Grid de Serviços */
+.servicos-lista {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
   .servicos-lista {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-bottom: 60px;
+    grid-template-columns: repeat(3, 1fr);
   }
-  
-  .servico {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .servico ul {
-    margin-top: 10px;
-    padding-left: 20px;
-  }
-  
-  /* ===== Tabela de planos ===== */
-  /* Substitui os atributos border/cellpadding/cellspacing removidos do HTML */
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #ffffff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  caption {
-    caption-side: top;
-    text-align: left;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  th,
-  td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    vertical-align: top;
-  }
-  
-  thead th {
-    background-color: rgb(156, 66, 240);
-    color: #ffffff;
-  }
-  
-  td ul {
-    margin: 0;
-    padding-left: 18px;
-  }
-  
-  /* ===== Footer ===== */
-  
-  footer {
-    background-color: #343a40;
-    color: #bbb;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 0.9em;
-  }
+}
+
+.servico {
+  background-color: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  padding: 2.25rem 1.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+}
+
+.servico:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+  border-color: #c7d2fe;
+}
+
+.servico h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.servico p {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.servico ul {
+  list-style: none;
+  padding: 0;
+  margin: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1.25rem;
+}
+
+.servico ul li {
+  font-size: 0.875rem;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.servico ul li::before {
+  content: "✓";
+  color: #4f46e5;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+/* ===== 4. Seção Planos e Preços ===== */
+#planos-titulo {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+#planos-titulo::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 24px;
+  background-color: #4f46e5;
+  border-radius: 9999px;
+}
+
+caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #64748b;
+  margin-bottom: 1rem;
+}
+
+/* Tabela de Planos */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+}
+
+thead th {
+  background-color: #f8fafc;
+  color: #0f172a;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1.15rem 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+tbody th,
+tbody td {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: top;
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+tbody tr:last-child th,
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: #faf5ff20;
+}
+
+tbody th[scope="row"] {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+tbody td:nth-child(2) {
+  font-weight: 800;
+  color: #4f46e5;
+  font-size: 1.25rem;
+  white-space: nowrap;
+}
+
+tbody td ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+tbody td ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #475569;
+}
+
+tbody td ul li::before {
+  content: "✓";
+  color: #4f46e5;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+/* ===== 5. Footer (Padrão Projetos) ===== */
+footer {
+  text-align: center;
+  padding: 2.25rem 1.5rem;
+  background-color: #0f172a;
+  color: #94a3b8;
+  margin-top: auto;
+  font-size: 0.875rem;
+  border-top: 1px solid #1e293b;
+}
+
+footer p {
+  margin: 0.25rem 0;
+}
