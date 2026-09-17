@@ -1,8 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Configurações da API do Google Gemini
-    const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
-  
     const toggleBtn = document.getElementById("ai-chat-toggle");
     const closeBtn = document.getElementById("ai-chat-close");
     const chatBox = document.getElementById("ai-chat-box");
@@ -16,31 +12,15 @@ document.addEventListener("DOMContentLoaded", () => {
       closeBtn.addEventListener("click", () => chatBox.classList.add("hidden"));
     }
   
-    // Função para chamar a API do Gemini
+    // Função para chamar a API do servidor
     async function fetchGeminiResponse(userPrompt) {
-      const payload = {
-        contents: [
-          {
-            role: "user",
-            parts: [{ text: userPrompt }]
-          }
-        ],
-        systemInstruction: {
-          parts: [
-            {
-              text: "Você é o assistente virtual inteligente do Squad G (equipe de desenvolvimento de software da FICR). Responda com clareza, simpatia e concisão em português do Brasil."
-            }
-          ]
-        }
-      };
-  
       try {
-        const response = await fetch(API_URL, {
+        const response = await fetch("/api/chat", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({ message: userPrompt })
         });
   
         if (!response.ok) {
@@ -48,12 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
   
         const data = await response.json();
-        const replyText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-  
-        return replyText || "Desculpe, não consegui processar sua resposta no momento.";
+        return data.reply || "Desculpe, não consegui processar sua resposta no momento.";
       } catch (error) {
-        console.error("Erro ao conectar com a API do Gemini:", error);
-        return "Desculpe, ocorreu um erro ao se comunicar com a IA. Verifique sua chave de API ou conexão.";
+        console.error("Erro ao conectar com o assistente do Squad G:", error);
+        return "Desculpe, ocorreu um erro ao se comunicar com o assistente virtual. Tente novamente mais tarde.";
       }
     }
   

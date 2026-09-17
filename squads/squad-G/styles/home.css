@@ -53,6 +53,7 @@ header {
 
 #menu-principal ul {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center; /* Centraliza os links do menu */
   align-items: center;
   list-style: none;

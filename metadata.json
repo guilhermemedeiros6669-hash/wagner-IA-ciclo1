@@ -1,0 +1,8 @@
+{
+  "name": "Squad G - Portfólio & Assistente IA",
+  "description": "Portfólio web e assistente virtual inteligente da equipe Squad G com projetos, equipe, habilidades, serviços e IA integrada.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
